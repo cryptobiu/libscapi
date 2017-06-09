@@ -67,6 +67,7 @@ PartyOne::PartyOne(YaoConfig & yao_config) {
 
 	// connect to party two
 	channel->join(500, 5000);
+	ungarbledInput = readInputAsVector(yao_config.input_file_1);
 };
 
 void PartyOne::setInputs(string inputFileName) {
@@ -160,6 +161,7 @@ PartyTwo::PartyTwo(YaoConfig & yao_config, bool print_output) {
 
 	// connect to party one
 	channel->join(500, 5000);
+	ungarbledInput = readInputAsVector(yao_config.input_file_2);
 }
 
 void PartyTwo::setInputs(string inputFileName) {
