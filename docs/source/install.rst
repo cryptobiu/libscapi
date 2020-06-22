@@ -43,7 +43,7 @@ Download and build libscapi: ::
   
 Publish new libs: ::
   
-  $ sudo ldconfig ~/boost_1_60_0/stage/lib/ ~/libscapi/install/lib/
+  $ sudo ldconfig ~/boost_1_64_0/stage/lib/ ~/libscapi/install/lib/
 
 Building and Running the Tests
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -109,9 +109,9 @@ Installing scapi on windows will require git client and Visual Studio IDE. We te
 Prerequisites: 
 
 1. Download and install open ssl for windows: https://slproweb.com/products/Win32OpenSSL.html (choose 64bit not light)
-2. Download and install boost binaries for windos: https://sourceforge.net/projects/boost/files/boost-binaries/1.60.0/ choose 64 bit version 14
+2. Download and install boost binaries for windos: https://sourceforge.net/projects/boost/files/boost-binaries/1.64.0/ choose 64 bit version 14
 
-The windows solutions assume that boost is installed at ``C:\local\boost_1_60_0`` and that OpenSSL at: ``C:\OpenSSL-Win64``
+The windows solutions assume that boost is installed at ``C:\local\boost_1_64_0`` and that OpenSSL at: ``C:\OpenSSL-Win64``
 
 
 Pull libscapi from GitHub. For convenient we will assume that libscapi is located at: ``c:\code\scapi\libscapi```. If it is located somewhere eles then the following paths should be adjusted accrodingly.
