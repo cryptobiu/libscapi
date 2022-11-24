@@ -21,15 +21,15 @@ Update and install git, gcc, gmp, and open ssl. On Ubuntu environment is should 
   $ sudo apt-get install -y libssl-ocaml-dev libssl-dev 
   $ sudo apt-get install -y libgmp3-dev
   
-Download and install boost (the last step might take some time. patience): ::
+Download and install boost 1.71 (the last step might take some time, patience): ::
   
-  $ wget -O boost_1_64_0.tar.bz2 http://sourceforge.net/projects/boost/files/boost/1.64.0/boost_1_64_0.tar.bz2/download
-  $ tar --bzip2 -xf boost_1_64_0.tar.bz2
-  $ cd boost_1_64_0
-  $  ./bootstrap.sh
-  $  ./b2 
+  $ wget https://dl.bintray.com/boostorg/release/1.71.0/source/boost_1_71_0.tar.bz2
+  $ tar -xf boost_1_71_0.tar.bz2
+  $ cd boost_1_71_0
+  $ ./bootstrap.sh --prefix=/usr && ./b2 stage threading=multi link=shared
+  $ sudo ./b2 install threading=multi link=shared
 
-More details about boost here: http://www.boost.org/doc/libs/1_64_0/more/getting_started/unix-variants.html  
+More details about boost here: http://www.boost.org/doc/libs/1_71_0/more/getting_started/unix-variants.html  
 
 Building libscapi and publishing libs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -43,59 +43,58 @@ Download and build libscapi: ::
   
 Publish new libs: ::
   
-  $ sudo ldconfig ~/boost_1_60_0/stage/lib/ ~/libscapi/install/lib/
+  $ sudo ldconfig ~/boost_1_71_0/stage/lib/ ~/libscapi/install/lib/
 
 Building and Running the Tests
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In order to build and run tests: ::
 
-  $ cd ~/libscapi/test
-  $ make
-  $ ./tests.exe
+  $ cd ~/libscapi/tests
+  $ ./ScapiTests
 
 Samples
 ~~~~~~~
 
-Build and run the samples program: ::
+Build the samples program: ::
 
-  $ cd ~/libscapi/samples
-  $ make
+  $ cd ~/libscapi/examples
+  $ cmake . && make
 
 In order to see all available samples: ::
 
- $ ./libscapi_example.exe
+ $ ./libscapi_example
  
 In order to run simple examples (dlog or sha1): ::
 
- $ ./libscapi_example.exe dlog 
- $ ./libscapi_example.exe sha1
+ $ ./libscapi_example dlog 
+ $ ./libscapi_example sha1
  
 You should get some print outs if everything works well.
 
 In order to run the CommExample. Open two terminals. In the first run: ::
  
- $ ./libscapi_example.exe comm 1 Comm/CommConfig.txt
+ $ ./libscapi_example comm 1 Comm/CommConfig.txt
  
 And in the other run: ::
 
- $ ./libscapi_example.exe comm 2 Comm/CommConfig.txt
+ $ ./libscapi_example comm 2 Comm/CommConfig.txt
 
 In order to run Semi-honset YAO, run in the first terminal: ::
 
-  $ ./libscapi_example.exe yao 1 Yao/YaoConfig.txt
+  $ ./libscapi_example yao 1 Yao/YaoConfig.txt
 
 And in the second: ::
   
-  $ ./libscapi_example.exe yao 2 Yao/YaoConfig.txt
+  $ ./libscapi_example yao 2 Yao/YaoConfig.txt
   
 Finally in order to run the Sigma example - in the first terminal run: ::
 
-  $ ./libscapi_example.exe sigma 1 SigmaPrototocls/SigmaConfig.txt
+  $ ./libscapi_example sigma 1 SigmaPrototocls/SigmaConfig.txt
 
 And in the second terminal: ::
 
- $ ./libscapi_example.exe sigma 1 SigmaPrototocls/SigmaConfig.txt
+ $ ./libscapi_example sigma 1 SigmaPrototocls/SigmaConfig.txt
 
 You can edit the config file in order to play with the different params in all examples.
 
@@ -109,9 +108,9 @@ Installing scapi on windows will require git client and Visual Studio IDE. We te
 Prerequisites: 
 
 1. Download and install open ssl for windows: https://slproweb.com/products/Win32OpenSSL.html (choose 64bit not light)
-2. Download and install boost binaries for windos: https://sourceforge.net/projects/boost/files/boost-binaries/1.60.0/ choose 64 bit version 14
+2. Download and install boost binaries for windos: https://sourceforge.net/projects/boost/files/boost-binaries/1.64.0/ choose 64 bit version 14
 
-The windows solutions assume that boost is installed at ``C:\local\boost_1_60_0`` and that OpenSSL at: ``C:\OpenSSL-Win64``
+The windows solutions assume that boost is installed at ``C:\local\boost_1_64_0`` and that OpenSSL at: ``C:\OpenSSL-Win64``
 
 
 Pull libscapi from GitHub. For convenient we will assume that libscapi is located at: ``c:\code\scapi\libscapi```. If it is located somewhere eles then the following paths should be adjusted accrodingly.
